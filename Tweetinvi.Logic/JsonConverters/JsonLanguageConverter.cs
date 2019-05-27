@@ -9,6 +9,11 @@ namespace Tweetinvi.Logic.JsonConverters
     {
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
+            if (reader.Value == null)
+            {
+                return Language.English;
+            }
+            
             int parsed;
 
             if (int.TryParse(reader.Value.ToString(), out parsed))
